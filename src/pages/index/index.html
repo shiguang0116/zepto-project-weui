@@ -1,0 +1,45 @@
+<%= require('html-loader!common/header/head-common.html') %>
+<%= htmlWebpackPlugin.options.title %>
+<%= require('html-loader!common/header/index.html') %>
+<section>
+	<div class="w">
+	    <h1>index</h1>
+		<a href="/index/buyer.html">to buyer.html</a>
+		<!-- form -->
+		<div class="weui-cells__title">表单</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">油品种类</label></div>
+                <div class="weui-cell__bd">
+                    <input id="showPicker" class="weui-input" placeholder="请选择油品种类"/>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="" class="weui-label">日期</label></div>
+                <div class="weui-cell__bd">
+                    <input id="showDatePicker" class="weui-input" placeholder="请选择日期"/>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="" class="weui-label">地址</label></div>
+                <div class="weui-cell__bd">
+                    <input id="showAddress" class="weui-input" placeholder="请选择地区"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells__title">表单报错</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell weui-cell_warn">
+                <div class="weui-cell__hd"><label for="" class="weui-label">卡号</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" pattern="[0-9]*" value="weui input error" placeholder="请输入卡号"/>
+                </div>
+                <div class="weui-cell__ft">
+                    <i class="weui-icon-warn"></i>
+                </div>
+            </div>
+        </div>
+	</div>
+</section>
+<%= require('html-loader!common/footer/index.html') %>
