@@ -4,6 +4,7 @@ const path                = require('path');
 const ExtractTextPlugin   = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin   = require('html-webpack-plugin');
 const CopyWebpackPlugin   = require('copy-webpack-plugin');
+// const px2rem              = require('postcss-px2rem');
 const util                = require('./util.js');
 const config              = require('./config.js');
 
@@ -28,16 +29,37 @@ const webpackBaseConfig = {
         rules: [
             { 
                 test: /\.css$/, 
-                loader: ExtractTextPlugin.extract({  
+                use: ExtractTextPlugin.extract({  
                     fallback: "style-loader",  
-                    use: "css-loader"  
+                    use: [
+                        { loader: "css-loader" },
+                        { loader: 'postcss-loader'},
+                        {
+                            loader: 'px2rem-loader',
+                            options: {
+                              remUnit: 100,
+                              remPrecision: 2
+                            }
+                        }
+                    ]
                 })
             },
             { 
                 test: /\.less$/, 
-                loader: ExtractTextPlugin.extract({  
+                use: ExtractTextPlugin.extract({  
                     fallback: "style-loader",  
-                    use: "css-loader!less-loader"
+                    use: [
+                        { loader: "css-loader" },
+                        { loader: 'postcss-loader'},
+                        { loader: "less-loader" },
+                        {
+                            loader: 'px2rem-loader',
+                            options: {
+                              remUnit: 100,
+                              remPrecision: 2
+                            }
+                        }
+                    ]
                 }) 
             },
             { 
@@ -60,7 +82,7 @@ const webpackBaseConfig = {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/
-            },
+            }
         ]
     },
     // 配置路径
@@ -88,10 +110,6 @@ const webpackBaseConfig = {
             {
                 from: resolve('src/utils/js'),
                 to: util.assetsPath('js/'),
-            },
-            {
-                from: resolve('src/utils/css'),
-                to: util.assetsPath('css/'),
             }
         ],{
             // ignore: ['.*']  //忽略拷贝指定的文件

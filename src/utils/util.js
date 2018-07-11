@@ -1,21 +1,54 @@
 'use strict';
 import env from 'build/env.js';
-import Hogan from 'hogan.js';
 
 const baseurl = env === 'development' ? '/api' : '';
 
+// 正则表达式
+const regex = {
+    email: function(value){
+        let re = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
+        if (!re.test(value)) {
+            return true
+        }
+    },
+    // 小数
+    number: function(value){
+        let re = /^[0-9]+\.?[0-9]*$/;
+        if (!re.test(value)) {
+            return true
+        }
+    },
+    // 手机号、座机
+    phone: function(value){
+        let re = /^1[0-9]{10}$/;
+        var re2 = /^((0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/;
+        if (!re.test(value) && !re2.test(value)) {
+            return true
+        }
+    }
+};
+
 const util = {
     getApiUrl : function(param){
-        let apiURL  = param.apiURL || '/api',
+        var apiURL  = param.apiURL || '/api',
             url     = param.url || '';
-        if (env === 'development') {
-            if (url.indexOf('://') > -1) {
-                let index = url.indexOf('/',url.indexOf('://')+3);
-                url = url.substring(index);
-            }
-        }else{
-            apiURL = '';
+        if (env === 'dev') {
+            whichAPI('/api', 'http://192.168.31.234:8081', 'http://192.168.31.234:8000');
+        }else if(env === 'build'){
+            whichAPI('', 'http://192.168.31.234:8081', 'http://192.168.31.234:8000');
+        }else if(env === 'online'){
+            whichAPI('', 'http://jishiyou.net:8083', 'http://jishiyou.net');
         }
+        function whichAPI(wechat, erp, web){
+            if(apiURL == '/api'){
+                apiURL = wechat;
+            }else if(apiURL == '/api_erp'){
+                apiURL = erp;
+            }else if(apiURL == '/api_web'){
+                apiURL = web;
+            }
+        }
+        // console.log(apiURL + url)
         return apiURL + url;
     },
     // 网络请求
@@ -41,7 +74,7 @@ const util = {
                 }
                 // 没有登录状态，需要强制登录
                 else if(res.status === 10){
-                    _this.doLogin();
+                    util.doLogin();
                 }
             },
             error       : function(err){
@@ -55,12 +88,6 @@ const util = {
         var result  = window.location.search.substr(1).match(reg);
         return result ? decodeURIComponent(result[2]) : null;
     },
-    // 渲染html模板
-    renderHtml : function(htmlTemplate, data){
-        var template    = Hogan.compile(htmlTemplate),
-            result      = template.render(data);
-        return result;
-    },
     // 统一登录处理
     doLogin : function(){
         window.location.href = '/index/user-login.html?redirect=' + encodeURIComponent(window.location.href);
@@ -71,36 +98,102 @@ const util = {
     
     /********************************************表单验证**************************************************/
 
-    validate : function(){
-        return {
-            email: function(value){
-                let re = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
-                if (!re.test(value)) {
-                    return true
-                }
-            },
-            number: function(value){
-                let re = /^[0-9]+\.?[0-9]*$/;
-                if (!re.test(value)) {
-                    return true
-                }
-            },
-            // 联系电话
-            phone: function(value){
-                let re = /^1[0-9]{10}$/;
-                var re2 = /^((0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/;
-                if (!re.test(this.Phone) && !re2.test(this.Phone)) {
-                    return true
+    // 验证字段
+    validate: function($obj){
+        var $item = $obj.hasClass('validate') ? $obj : $obj.parents('.weui-cells_form').find('.validate');
+        var $label = $item.find('.weui-label');
+        var $inp = $item.find('.weui-input');
+        var $msg = $item.find('.weui-cell__error');
+        for(var i=0; i<$item.length; i++){
+            var value = $inp.eq(i).val();
+            // 非空验证
+            if(value === ''){
+                console.log('2')
+                if($item.eq(i).hasClass('rule_required')){
+                    var text = util.trim($label.eq(i).text(), true);
+                    text = text.replace(":","");
+                    text = text.replace("：","");
+                    text = text.replace("*","");
+                    hasError(text + '不能为空');
                 }
             }
-        };
+            // 手机号验证
+            else if($item.eq(i).hasClass('rule_phone')){
+                if (regex.phone(value)) {
+                    hasError('请输入正确的手机格式');
+                }else{
+                    noError();
+                }
+            }
+            // 数字验证
+            else if($item.eq(i).hasClass('rule_number')) {
+                var re = /^[0-9]+\.?[0-9]*$/;
+                if(value <= 0){
+                    hasError('输入的数字必须大于0') ;
+                }else if(!re.test(value)){
+                    hasError('请输入正确的数字') ;
+                }else{
+                    noError();
+                }
+            }
+            else{
+                console.log('3')
+                noError();
+            }
+            function hasError(msg){
+                $item.eq(i).addClass('weui-cell_warn');
+                $msg.eq(i).text(msg);
+                // $inp.focus();
+            };
+            function noError(){
+                $item.eq(i).removeClass('weui-cell_warn');
+                $msg.eq(i).text('');
+            };
+        }
+        return !$item.hasClass('weui-cell_warn');
+    },
+    // 失去焦点验证
+    validateBlur: function(){
+        $('input').blur(function(){
+            const $item = $(this).parents('.validate');
+            util.validate($item);
+        })
+    },
+    // 验证码处理
+    getSMSCode: function () {
+        // 验证码
+        var $btn = $('.field_SMSCode .btn');
+        var disabled = true;
+        var time = 60;
+        $('.field_Account input').on("input", function () {
+            var value = $(this).val();
+            if ($btn) {
+                if (regex.phone(value)) {
+                    $btn.hasClass('disabled') ? '' : $btn.addClass('disabled');
+                } else {
+                    time == 60 ? $btn.removeClass('disabled') : '';
+                }
+                disabled = $btn.hasClass('disabled');
+            }
+        });
+        $btn.on('click', function () {
+            if (!disabled) {
+                // ajax
+                
+            }
+        });
     },
 
     /********************************************字符窜**************************************************/
 
-    // 清除前后空格
-    trim : function(str) { 
-        return str.replace(/(^\s*)|(\s*$)/g, ""); 
+    // 清除空格
+    trim : function(str, is_global) { //is_global为true时清楚所有空格
+        var result;
+        result = str.replace(/(^\s+)|(\s+$)/g, "");
+        if (is_global == true) {
+            result = result.replace(/\s/g, "");
+        }
+        return result;
     },
 
     /*********************************************日期*******************************************************/
@@ -170,5 +263,7 @@ const util = {
         obj2.style.display = 'block'; 
     }
 };
+
+util.validateBlur()
 
 module.exports = util;

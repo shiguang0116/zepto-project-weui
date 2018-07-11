@@ -131,6 +131,13 @@ const page = {
                    },
                 });
         });
+        // 提交
+        $('#submit').tap(function(){
+            const result = util.validate($(this))
+            if(result){
+                console.log('ajax')
+            }
+        })
     }
 };
 

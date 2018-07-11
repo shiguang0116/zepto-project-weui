@@ -1,45 +1,37 @@
 <%= require('html-loader!common/header/head-common.html') %>
 <%= htmlWebpackPlugin.options.title %>
 <%= require('html-loader!common/header/index.html') %>
-<section>
-	<div class="w">
-	    <h1>index</h1>
-		<a href="/index/buyer.html">to buyer.html</a>
-		<!-- form -->
-		<div class="weui-cells__title">表单</div>
-        <div class="weui-cells weui-cells_form">
-            <div class="weui-cell">
-                <div class="weui-cell__hd"><label class="weui-label">油品种类</label></div>
-                <div class="weui-cell__bd">
-                    <input id="showPicker" class="weui-input" placeholder="请选择油品种类"/>
-                </div>
+<div class="page">
+    <!-- form -->
+    <div class="weui-cells__title">表单</div>
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell weui-cell_select weui-cell_select-after validate rule_required">
+            <div class="weui-cell__hd"><label class="weui-label">油品种类</label></div>
+            <div class="weui-cell__bd">
+                <input id="showPicker" class="weui-input weui-select" disabled placeholder="请选择油品种类"/>
             </div>
-            <div class="weui-cell">
-                <div class="weui-cell__hd"><label for="" class="weui-label">日期</label></div>
-                <div class="weui-cell__bd">
-                    <input id="showDatePicker" class="weui-input" placeholder="请选择日期"/>
-                </div>
-            </div>
-            <div class="weui-cell">
-                <div class="weui-cell__hd"><label for="" class="weui-label">地址</label></div>
-                <div class="weui-cell__bd">
-                    <input id="showAddress" class="weui-input" placeholder="请选择地区"/>
-                </div>
-            </div>
+            <div class="weui-cell__error"></div>
         </div>
-
-        <div class="weui-cells__title">表单报错</div>
-        <div class="weui-cells weui-cells_form">
-            <div class="weui-cell weui-cell_warn">
-                <div class="weui-cell__hd"><label for="" class="weui-label">卡号</label></div>
-                <div class="weui-cell__bd">
-                    <input class="weui-input" type="number" pattern="[0-9]*" value="weui input error" placeholder="请输入卡号"/>
-                </div>
-                <div class="weui-cell__ft">
-                    <i class="weui-icon-warn"></i>
-                </div>
+        <div class="weui-cell weui-cell_select weui-cell_select-after validate rule_required">
+            <div class="weui-cell__hd"><label for="" class="weui-label">日期</label></div>
+            <div class="weui-cell__bd">
+                <input id="showDatePicker" class="weui-input weui-select" disabled placeholder="请选择日期"/>
             </div>
+            <div class="weui-cell__error"></div>
         </div>
-	</div>
-</section>
+        <div class="weui-cell validate rule_required rule_phone">
+            <div class="weui-cell__hd"><label for="" class="weui-label">手机号</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="number" placeholder="请输入手机号"/>
+            </div>
+            <div class="weui-cell__ft">
+                <i class="weui-icon-warn"></i>
+            </div>
+            <div class="weui-cell__error"></div>
+        </div>
+        <div style="margin-top: 0.3rem">
+            <a href="javascript:;" id="submit" class="weui-btn weui-btn_primary">提交</a>
+        </div>
+    </div>
+</div>
 <%= require('html-loader!common/footer/index.html') %>
