@@ -1,5 +1,5 @@
 // css
-import './styles/test.css';
+// import './styles/test.css';
 import './utils/css/weui.min.css';
 import './styles/index.less';
 

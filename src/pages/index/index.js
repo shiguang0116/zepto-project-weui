@@ -10,7 +10,7 @@ const page = {
         this.bindEvent();
     },
     getList : function(){
-        
+
     },
     bindEvent : function(){
         const _this = this;

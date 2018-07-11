@@ -4,7 +4,6 @@ const path    = require('path')
 const config  = require('./config.js');
 
 const pageObj = {
-    'demo'                  : { type: 'index', title: '组件用例' },
     'index'                 : { type: 'index', title: '首页' },
 }
 

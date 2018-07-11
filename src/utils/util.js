@@ -53,6 +53,7 @@ const util = {
     },
     // 网络请求
     ajax : function(param){
+        weui.loading('加载中...');
         var _this = this;
         $.ajax({
             type        : param.method || 'POST',
@@ -63,6 +64,7 @@ const util = {
             data        : param.data || '',
             dataType    : param.type || 'json',
             success     : function(res){
+                weui.loading().hide();
                 var res = res;
                 // 请求数据成功
                 if(res.ReturnCode === 'success'){
@@ -70,15 +72,18 @@ const util = {
                 }
                 // 请求数据错误
                 else if(res.ReturnCode === 'error'){
-                    // util.errTip(res.ReturnMessage)
+                    // weui.alert('res.ReturnMessage', 3000);
+                    weui.topTips(res.ReturnMessage, 3000);
                 }
                 // 没有登录状态，需要强制登录
                 else if(res.status === 10){
-                    util.doLogin();
+                    util.toLogin();
                 }
             },
             error       : function(err){
-                // util.errTip(err.statusText)
+                weui.loading().hide();
+                weui.topTips(err.statusText, 3000);
+                // 页面跳转
             }
         });
     },
@@ -89,7 +94,7 @@ const util = {
         return result ? decodeURIComponent(result[2]) : null;
     },
     // 统一登录处理
-    doLogin : function(){
+    toLogin : function(){
         window.location.href = '/index/user-login.html?redirect=' + encodeURIComponent(window.location.href);
     },
     goHome : function(){
@@ -108,7 +113,6 @@ const util = {
             var value = $inp.eq(i).val();
             // 非空验证
             if(value === ''){
-                console.log('2')
                 if($item.eq(i).hasClass('rule_required')){
                     var text = util.trim($label.eq(i).text(), true);
                     text = text.replace(":","");
@@ -137,7 +141,6 @@ const util = {
                 }
             }
             else{
-                console.log('3')
                 noError();
             }
             function hasError(msg){
@@ -154,10 +157,10 @@ const util = {
     },
     // 失去焦点验证
     validateBlur: function(){
-        $('input').blur(function(){
-            const $item = $(this).parents('.validate');
-            util.validate($item);
-        })
+        // $('input').blur(function(){
+        //     const $item = $(this).parents('.validate');
+        //     util.validate($item);
+        // })
     },
     // 验证码处理
     getSMSCode: function () {

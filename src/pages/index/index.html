@@ -2,7 +2,6 @@
 <%= htmlWebpackPlugin.options.title %>
 <%= require('html-loader!common/header/index.html') %>
 <div class="page">
-    <!-- form -->
     <div class="weui-cells__title">表单</div>
     <div class="weui-cells weui-cells_form">
         <div class="weui-cell weui-cell_select weui-cell_select-after validate rule_required">
@@ -29,9 +28,27 @@
             </div>
             <div class="weui-cell__error"></div>
         </div>
-        <div style="margin-top: 0.3rem">
+        <div style="margin-top: 0.3rem" class="w">
             <a href="javascript:;" id="submit" class="weui-btn weui-btn_primary">提交</a>
         </div>
     </div>
+    
+    <!--  -->
+    <div class="weui-tab">
+            <div class="weui-tab__panel">
+
+            </div>
+            <div class="weui-tabbar">
+                <a href="/index/index.html" class="weui-tabbar__item weui-bar__item_on">
+                    <p class="weui-tabbar__label">行情</p>
+                </a>
+                <a href="/index/store.html" class="weui-tabbar__item">
+                    <p class="weui-tabbar__label">油品商城</p>
+                </a>
+                <a href="/index/user-center.html" class="weui-tabbar__item">
+                    <p class="weui-tabbar__label">我的</p>
+                </a>
+            </div>
+        </div>
 </div>
 <%= require('html-loader!common/footer/index.html') %>

@@ -1,5 +1,6 @@
 'use strict';
 import './index.less';
+import '@/components/card/index.js';
 import util from'utils/util.js';
 
 // 页面

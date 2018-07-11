@@ -1,0 +1,35 @@
+<%= require('html-loader!common/header/head-common.html') %>
+<%= htmlWebpackPlugin.options.title %>
+<%= require('html-loader!common/header/index.html') %>
+<div class="page">
+    <div class="weui-cells weui-cells_form" style="margin-top: 1.8rem">
+        <div class="weui-cell validate rule_required">
+            <div class="weui-cell__hd">
+                <label for="reaname" class="weui-label">用户名</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="reaname" class="weui-input" placeholder="请输入用户名"/>
+            </div>
+            <div class="weui-cell__ft">
+                <i class="weui-icon-warn"></i>
+            </div>
+            <div class="weui-cell__error"></div>
+        </div>
+        <div class="weui-cell validate rule_required">
+            <div class="weui-cell__hd">
+                <label for="password" class="weui-label">密码</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="password" class="weui-input" type="password" placeholder="请输入密码"/>
+            </div>
+            <div class="weui-cell__ft">
+                <i class="weui-icon-warn"></i>
+            </div>
+            <div class="weui-cell__error"></div>
+        </div>
+        <div class="w" style="margin-top: 0.3rem">
+            <a href="javascript:;" id="submit" class="weui-btn weui-btn_primary">登录</a>
+        </div>
+    </div>
+</div>
+<%= require('html-loader!common/footer/index.html') %>

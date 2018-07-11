@@ -4,8 +4,8 @@
         i = 375,
         d = i / 100,
         o = "orientationchange" in n ? "orientationchange" : "resize",
-        w = t.clientWidth || 320; w > 720 && (w = 720),
         fn = function () {
+            var w = t.clientWidth || 320; w > 720 && (w = 720);
             t.style.fontSize = w / d + "px";
         };
     e.addEventListener && (n.addEventListener(o, fn, !1), e.addEventListener("DOMContentLoaded", fn, !1))

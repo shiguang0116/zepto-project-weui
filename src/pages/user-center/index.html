@@ -1,0 +1,43 @@
+<%= require('html-loader!common/header/head-common.html') %>
+<%= htmlWebpackPlugin.options.title %>
+<%= require('html-loader!common/header/index.html') %>
+<div class="page">
+    <div class="weui-cells">
+        <a class="weui-cell weui-cell_access" href="/index/user-order.html">
+            <div class="weui-cell__hd" style="width: 0.4rem;"><img width="100%" src="<%= require('@/images/tou.png') %>"></div>
+            <div class="w weui-cell__bd">
+                <div>石光</div>
+                <div>13566667777</div>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </a>
+    </div>
+    <div class="weui-cells">
+        <a class="weui-cell weui-cell_access" href="/index/user-order.html">
+            <div class="weui-cell__bd">我的订单</div>
+            <div class="weui-cell__ft"></div>
+        </a>
+        <a class="weui-cell weui-cell_access" href="/index/user-business.html">
+            <div class="weui-cell__bd">交易统计</div>
+            <div class="weui-cell__ft"></div>
+        </a>
+        <a class="weui-cell weui-cell_access" href="/index/user-order.html">
+            <div class="weui-cell__bd">询价单</div>
+            <div class="weui-cell__ft"></div>
+        </a>
+        <a class="weui-cell weui-cell_access" href="/index/user-business.html">
+            <div class="weui-cell__bd">物流订单</div>
+            <div class="weui-cell__ft"></div>
+        </a>
+        <a class="weui-cell weui-cell_access" href="/index/user-business.html">
+            <div class="weui-cell__bd">我的消息</div>
+            <div class="weui-cell__ft"></div>
+        </a>
+    </div>
+    <div class="weui-cells">
+        <a id="logout" class="weui-cell weui-cell_access" href="javascript:;">
+            <div class="weui-cell__bd">安全退出</div>
+        </a>
+    </div>
+</div>
+<%= require('html-loader!common/footer/index.html') %>
