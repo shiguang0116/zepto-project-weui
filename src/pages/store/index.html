@@ -2,18 +2,124 @@
 <%= htmlWebpackPlugin.options.title %>
 <%= require('html-loader!common/header/index.html') %>
 <div class="page">
-	<!-- search -->
-	
+    <!-- 排序 -->
+    <div class="flex">
+        <div class="flex1 weui-tab" id="tab">
+            <div class="weui-navbar">
+                <div class="weui-navbar__item">更新时间</div>
+                <div class="weui-navbar__item">价格</div>
+            </div>
+        </div>
+        <div class="filter">筛选</div>
+    </div>
+    <!-- search -->
+    <div class="search weui-cells weui-cells_form">
+        <div class="weui-cell weui-cell_select weui-cell_select-after validate rule_required">
+            <div class="weui-cell__hd"><label class="weui-label">地区</label></div>
+            <div class="weui-cell__bd">
+                <input id="showAddress" class="weui-input weui-select" disabled placeholder="请选择地区"/>
+            </div>
+            <div class="weui-cell__error"></div>
+        </div>
+        <div class="weui-cell weui-cell_select weui-cell_select-after validate rule_required">
+            <div class="weui-cell__hd"><label class="weui-label">来源</label></div>
+            <div class="weui-cell__bd">
+                <input id="showFrom" class="weui-input weui-select" disabled placeholder="请选择油品来源"/>
+            </div>
+            <div class="weui-cell__error"></div>
+        </div>
+        <div class="weui-cell weui-cell_select weui-cell_select-after validate rule_required">
+            <div class="weui-cell__hd"><label class="weui-label">油品</label></div>
+            <div class="weui-cell__bd">
+                <input id="showType" class="weui-input weui-select" disabled placeholder="请选择油品种类"/>
+            </div>
+            <div class="weui-cell__error"></div>
+        </div>
+        <div class="weui-cell weui-cell_select weui-cell_select-after validate rule_required">
+            <div class="weui-cell__hd"><label class="weui-label">标号</label></div>
+            <div class="weui-cell__bd">
+                <input id="showMark" class="weui-input weui-select" disabled placeholder="请选择油品标号"/>
+            </div>
+            <div class="weui-cell__error"></div>
+        </div>
+        <div class="weui-cell weui-cell_select weui-cell_select-after validate rule_required">
+            <div class="weui-cell__hd"><label class="weui-label">级别</label></div>
+            <div class="weui-cell__bd">
+                <input id="showLevel" class="weui-input weui-select" disabled placeholder="请选择油品级别"/>
+            </div>
+            <div class="weui-cell__error"></div>
+        </div>
+        <div class="flex" style="margin: 0.1rem 0;">
+            <div class="w flex1">
+                <a href="javascript:;" id="cancel" class="weui-btn weui-btn_md weui-btn_default">取消</a>
+            </div>
+            <div class="w flex1">
+                <a href="javascript:;" id="submit" class="weui-btn weui-btn_md weui-btn_primary">搜索</a>
+            </div>
+        </div>
+    </div>
+
 	<!-- card -->
-	<%= require('html-loader!@/components/card/index.html') %>
+    <div class="card">
+        <div class="card-bd">
+            <p class="card-title">中国石化 车柴 0# 国V</p>
+            <p>油库：湖北省</p>
+            <p>更新时间：2018-05-05 10:21:13</p>
+            <p>起购吨数：2&nbsp;吨</p>
+        </div>
+        <div class="card-ft flex flex-middle">
+            <p class="flex1">价格：
+                <span class="text-jv">6690</span>&nbsp;元&nbsp;/&nbsp;吨</p>
+            <a href="/index/store-createorders.html" class="weui-btn weui-btn_md weui-btn_primary">委托采购</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-bd">
+            <p class="card-title">中国石化 车柴 0# 国V</p>
+            <p>油库：湖北省</p>
+            <p>更新时间：2018-05-05 10:21:13</p>
+            <p>起购吨数：2&nbsp;吨</p>
+        </div>
+        <div class="card-ft flex flex-middle">
+            <p class="flex1">价格：
+                <span class="text-jv">6690</span>&nbsp;元&nbsp;/&nbsp;吨</p>
+            <a href="/index/store-createorders.html" class="weui-btn weui-btn_md weui-btn_primary">委托采购</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-bd">
+            <p class="card-title">中国石化 车柴 0# 国V</p>
+            <p>油库：湖北省</p>
+            <p>更新时间：2018-05-05 10:21:13</p>
+            <p>起购吨数：2&nbsp;吨</p>
+        </div>
+        <div class="card-ft flex flex-middle">
+            <p class="flex1">价格：
+                <span class="text-jv">6690</span>&nbsp;元&nbsp;/&nbsp;吨</p>
+            <a href="/index/store-createorders.html" class="weui-btn weui-btn_md weui-btn_primary">委托采购</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-bd">
+            <p class="card-title">中国石化 车柴 0# 国V</p>
+            <p>油库：湖北省</p>
+            <p>更新时间：2018-05-05 10:21:13</p>
+            <p>起购吨数：2&nbsp;吨</p>
+        </div>
+        <div class="card-ft flex flex-middle">
+            <p class="flex1">价格：
+                <span class="text-jv">6690</span>&nbsp;元&nbsp;/&nbsp;吨</p>
+            <a href="/index/store-createorders.html" class="weui-btn weui-btn_md weui-btn_primary">委托采购</a>
+        </div>
+    </div>
 
 	<!-- loadmore -->
     <div class="weui-loadmore">
 		<i class="weui-loading"></i>
 		<span class="weui-loadmore__tips">正在加载</span>
 	</div>
-	<div class="weui-loadmore weui-loadmore_line">
+	<!-- <div class="weui-loadmore weui-loadmore_line">
 		<span class="weui-loadmore__tips">暂无数据</span>
-	</div>
+	</div> -->
 </div>
 <%= require('html-loader!common/footer/index.html') %>

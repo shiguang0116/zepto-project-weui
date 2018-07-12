@@ -48,6 +48,8 @@
     "webpack-px2rem-loader": "0.0.4"
   },
   "dependencies": {
-    "hogan": "^1.0.2"
+    "hogan": "^1.0.2",
+    "weui": "^1.1.3",
+    "weui.js": "^1.1.3"
   }
 }

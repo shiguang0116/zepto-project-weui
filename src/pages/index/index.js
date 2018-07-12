@@ -14,22 +14,7 @@ const page = {
     },
     bindEvent : function(){
         const _this = this;
-        $('#showPicker').tap(function () {
-            weui.picker([{
-                label: '普柴',
-                value: 0
-            }, {
-                label: '车柴',
-                value: 1
-            }, {
-                label: '汽油',
-                value: 2
-            }], {
-                onConfirm: function (res) {
-                    $('#showPicker').val(res[0].label);
-                },
-            });
-        });
+        
         $('#showDatePicker').tap(function () {
             weui.datePicker({
                 start: 2017,

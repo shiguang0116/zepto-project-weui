@@ -10,7 +10,7 @@ const footer = {
     handleFooter : function(){
         const oFoot = document.getElementById('footer')
         const oBody = document.getElementsByTagName('body')[0]
-        util.handleFooter(oBody,oFoot,64)
+        // util.handleFooter(oBody,oFoot,64)
     }
 };
 

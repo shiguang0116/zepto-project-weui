@@ -108,8 +108,14 @@ const webpackBaseConfig = {
         // 复制文件
         new CopyWebpackPlugin([
             {
+                from: resolve('node_modules/weui.js/dist/weui.min.js'),
+                to: util.assetsPath('js/'),
+                flatten: true
+            },
+            {
                 from: resolve('src/utils/js'),
                 to: util.assetsPath('js/'),
+                flatten: true
             }
         ],{
             // ignore: ['.*']  //忽略拷贝指定的文件

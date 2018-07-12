@@ -264,6 +264,20 @@ const util = {
         obj2.style.position = 'absolute'; 
         obj2.style.bottom = '0'; 
         obj2.style.display = 'block'; 
+    },
+
+    infinite: function(tim){
+        var tim = tim || 0;
+        var sh = document.documentElement.clientHeight;
+        var oh = $(document).height();
+        $(window).scroll(function() {
+            var top = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+            if(oh-sh-top <= tim){
+                $('.weui-loadmore').show();
+            }else{
+                $('.weui-loadmore').hide();
+            }
+        });
     }
 };
 

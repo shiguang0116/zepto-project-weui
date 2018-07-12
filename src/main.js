@@ -1,6 +1,6 @@
 // css
 // import './styles/test.css';
-import './utils/css/weui.min.css';
+import 'weui';
 import './styles/index.less';
 
 // common
