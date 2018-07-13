@@ -4,6 +4,12 @@
     background: url('../images/empty.png') no-repeat;
 }
 
+// link
+
+.weui-agree a {
+    color: @link-btn-color;
+}
+
 // btn
 .weui-btn_primary {
     background-color: @btn-primary-bg;
@@ -44,10 +50,52 @@
 .weui-picker__item {
     font-size: 0.2rem;
 }
+.weui-vcode-btn{
+    color: @btn-primary-bg;
+    padding: 0 1em 0 0.7em;
+}
+.weui-vcode-btn:active {
+    color: @btn-primary-bg;
+}
+
+.weui-cells:after {
+    border-bottom: 0px solid #e5e5e5;
+}
+.weui-cell:before {
+    border-bottom-width: 1px;
+    left: 0.15rem;
+    right: 0.15rem;
+}
 
 // loadmore
 .weui-loadmore{
     display: none;
+}
+
+// 头部navbar
+.weui-nav{
+    position: relative;
+    height: 100%;
+}
+.weui-navbar__item.weui-bar__item_on {
+    background-color: #ECECEC;
+}
+
+// 底部tabnav
+.weui-tab{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 0.5rem;
+}
+.weui-tabbar {
+    position: static;
+    height: 100%;
+}
+.weui-tabbar__label {
+    color: #666;
+    font-size: 0.16rem;
+    line-height: 0.4rem;
 }
 
 

@@ -1,6 +1,7 @@
 'use strict';
 import './index.less';
 import util from'utils/util.js';
+import nav from'common/nav/index';
 
 // 页面
 const page = {

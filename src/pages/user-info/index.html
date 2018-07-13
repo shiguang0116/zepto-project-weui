@@ -1,0 +1,39 @@
+<%= require('html-loader!common/header/head-common.html') %>
+<%= htmlWebpackPlugin.options.title %>
+<%= require('html-loader!common/header/index.html') %>
+<div class="page user-info">
+    <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>头像</p>
+            </div>
+            <div class="weui-cell__ft">
+                <img width="50" src="<%= require('@/images/tou.png') %>">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>称呼</p> 
+            </div>
+            <div class="weui-cell__ft">石光</div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>手机号码</p>
+            </div>
+            <div class="weui-cell__ft">13455556666</div>
+        </div>
+        <a class="weui-cell weui-cell_access" href="/index/user-resetpsw.html">
+            <div class="weui-cell__bd">
+                <p>修改密码</p>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </a>
+    </div>
+    <div class="weui-cells">
+        <a id="logout" class="weui-cell weui-cell_access" href="javascript:;">
+            <div class="weui-cell__bd">退出</div>
+        </a>
+    </div>
+</div>
+<%= require('html-loader!common/footer/index.html') %>

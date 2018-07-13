@@ -112,6 +112,11 @@ const webpackBaseConfig = {
                 to: util.assetsPath('js/'),
                 flatten: true
             },
+            // {
+            //     from: resolve('node_modules/jquery-weui/dist/js/jquery-weui.min.js'),
+            //     to: util.assetsPath('js/'),
+            //     flatten: true
+            // },
             {
                 from: resolve('src/utils/js'),
                 to: util.assetsPath('js/'),

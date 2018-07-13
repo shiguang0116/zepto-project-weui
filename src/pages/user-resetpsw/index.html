@@ -1,0 +1,59 @@
+<%= require('html-loader!common/header/head-common.html') %>
+<%= htmlWebpackPlugin.options.title %>
+<%= require('html-loader!common/header/index.html') %>
+<div class="page">
+    <div class="weui-cells weui-cells_form" style="margin-top: 0.18rem">
+        <div class="weui-cell validate rule_required rule_phone">
+            <div class="weui-cell__hd">
+                <label for="Account" class="weui-label">手机号</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="Account" class="weui-input" placeholder="请输入手机号"/>
+            </div>
+            <div class="weui-cell__ft">
+                <i class="weui-icon-warn"></i>
+            </div>
+            <div class="weui-cell__error"></div>
+        </div>
+        <div class="weui-cell weui-cell_vcode validate rule_required">
+            <div class="weui-cell__hd">
+                <label for="SMSCode" class="weui-label">验证码</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="SMSCode" class="weui-input" placeholder="请输入验证码"/>
+            </div>
+            <div class="weui-cell__ft">
+                <button class="weui-vcode-btn">获取验证码</button>
+            </div>
+            <div class="weui-cell__error"></div>
+        </div>
+        <div class="weui-cell validate rule_required">
+            <div class="weui-cell__hd">
+                <label for="Password" class="weui-label">密码</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="Password" class="weui-input" type="password" placeholder="请输入密码"/>
+            </div>
+            <div class="weui-cell__ft">
+                <i class="weui-icon-warn"></i>
+            </div>
+            <div class="weui-cell__error"></div>
+        </div>
+        <div class="weui-cell validate rule_required">
+            <div class="weui-cell__hd">
+                <label for="ConfirmPWD" class="weui-label">确认密码</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="ConfirmPWD" class="weui-input" type="password" placeholder="请再次输入密码"/>
+            </div>
+            <div class="weui-cell__ft">
+                <i class="weui-icon-warn"></i>
+            </div>
+            <div class="weui-cell__error"></div>
+        </div>
+        <div class="w" style="margin-top: 0.3rem">
+            <a href="javascript:;" id="submit" class="weui-btn weui-btn_primary">重置密码</a>
+        </div>
+    </div>
+</div>
+<%= require('html-loader!common/footer/index.html') %>

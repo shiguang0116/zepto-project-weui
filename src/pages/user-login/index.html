@@ -2,7 +2,7 @@
 <%= htmlWebpackPlugin.options.title %>
 <%= require('html-loader!common/header/index.html') %>
 <div class="page">
-    <div class="weui-cells weui-cells_form" style="margin-top: 1.8rem">
+    <div class="weui-cells weui-cells_form" style="margin-top: 1.6rem">
         <div class="weui-cell validate rule_required">
             <div class="weui-cell__hd">
                 <label for="reaname" class="weui-label">用户名</label>
@@ -27,9 +27,13 @@
             </div>
             <div class="weui-cell__error"></div>
         </div>
-        <div class="w" style="margin-top: 0.3rem">
-            <a href="javascript:;" id="submit" class="weui-btn weui-btn_primary">登录</a>
-        </div>
+    </div>
+    <div class="w" style="margin-top: 0.3rem">
+        <a href="javascript:;" id="submit" class="weui-btn weui-btn_primary">登录</a>
+    </div>
+    <div class="w t-right" style="margin-top: 0.18rem">
+        <a href="/index/user-resetpsw.html" style="margin-right: 0.2rem" class="text-grayer">忘记密码</a>
+        <a href="/index/user-register.html" class="text-grayer">免费注册</a>
     </div>
 </div>
 <%= require('html-loader!common/footer/index.html') %>

@@ -17,4 +17,6 @@ const header = {
     }
 };
 
-header.init();
+$(function(){
+    header.init();
+})

@@ -10,7 +10,13 @@ const page = {
     },
     bindEvent : function(){
         const _this = this;
-        
+        $('#logout').tap(function () {
+            weui.confirm('退出后您将无法查看交易信息以及采购油品。', function(){ 
+                util.toLogin();
+            }, { 
+                title: '确定退出吗' 
+            });
+        });
     }
 };
 

@@ -1,42 +1,50 @@
 <%= require('html-loader!common/header/head-common.html') %>
 <%= htmlWebpackPlugin.options.title %>
 <%= require('html-loader!common/header/index.html') %>
-<div class="page">
-    <div class="weui-cells">
-        <a class="weui-cell weui-cell_access" href="/index/user-order.html">
-            <div class="weui-cell__hd" style="width: 0.4rem;"><img width="100%" src="<%= require('@/images/tou.png') %>"></div>
+<div class="page user-center">
+    <div class="weui-cells user-center-hd">
+        <a class="weui-cell weui-cell_access" href="/default/user-info.html">
+            <div class="weui-cell__hd" style="width: 0.8rem;">
+                <img width="100%" src="<%= require('@/images/tou.png') %>">
+            </div>
             <div class="w weui-cell__bd">
                 <div>石光</div>
-                <div>13566667777</div>
             </div>
             <div class="weui-cell__ft"></div>
         </a>
     </div>
+    <div class="weui-cells user-center-ct flex flex-around">
+        <a href="javascript:;" class="weui-tabbar__item">
+            <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+            <p class="weui-tabbar__label">我的订单</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item">
+            <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+            <p class="weui-tabbar__label">我的消息</p>
+        </a>
+    </div>
     <div class="weui-cells">
-        <a class="weui-cell weui-cell_access" href="/index/user-order.html">
-            <div class="weui-cell__bd">我的订单</div>
-            <div class="weui-cell__ft"></div>
+        <a class="weui-cell weui-cell_access" href="tel:4006309188">
+            <div class="weui-cell__bd">专属客服</div>
+            <div class="weui-cell__ft">4006309188</div>
         </a>
         <a class="weui-cell weui-cell_access" href="/index/user-business.html">
             <div class="weui-cell__bd">交易统计</div>
             <div class="weui-cell__ft"></div>
         </a>
-        <a class="weui-cell weui-cell_access" href="/index/user-order.html">
+        <a class="weui-cell weui-cell_access" href="/index/user-enquiry.html">
             <div class="weui-cell__bd">询价单</div>
             <div class="weui-cell__ft"></div>
         </a>
-        <a class="weui-cell weui-cell_access" href="/index/user-business.html">
+        <a class="weui-cell weui-cell_access" href="/index/user-logistics.html">
             <div class="weui-cell__bd">物流订单</div>
-            <div class="weui-cell__ft"></div>
-        </a>
-        <a class="weui-cell weui-cell_access" href="/index/user-business.html">
-            <div class="weui-cell__bd">我的消息</div>
             <div class="weui-cell__ft"></div>
         </a>
     </div>
     <div class="weui-cells">
-        <a id="logout" class="weui-cell weui-cell_access" href="javascript:;">
-            <div class="weui-cell__bd">安全退出</div>
+        <a class="weui-cell weui-cell_access" href="/index/user-help.html">
+            <div class="weui-cell__bd">帮助中心</div>
+            <div class="weui-cell__ft"></div>
         </a>
     </div>
 </div>

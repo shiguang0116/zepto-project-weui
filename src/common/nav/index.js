@@ -1,19 +1,17 @@
 'use strict';
 import './index.less';
-import util from'utils/util.js';
+import util from 'utils/util.js';
 
-// 导航
-var nav = {
+const nav = {
     init : function(){
-        this.onLoad();
         this.bindEvent();
     },
-    onLoad : function(){
-        
-    },
     bindEvent : function(){
-        var _this = this;
+        const _this = this;
+        $('.weui-tabbar__item').tap(function () {
+            $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+        });
     }
 };
 
-module.exports = nav.init();
+export default nav.init();

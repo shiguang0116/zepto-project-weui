@@ -72,16 +72,20 @@ a,img,span{
 .t-left{ text-align: left; }
 .t-right{ text-align: right; }
 .t-center{ text-align: center; }
+
+/* text */
+.text-gray{color: @text-color;}
+.text-grayer{color: #999;}
+.text-jv{color: @yoo-jv;}
+.text-hu{color: @yoo-hu;}
 .nowrap{
     white-space:nowrap;
     text-overflow:ellipsis;
     overflow:hidden;
 }
-
-/* text */
-.text-gray{color: @text-color;}
-.text-jv{color: @yoo-jv;}
-.text-hu{color: @yoo-hu;}
+.break-word{
+    word-wrap: break-word;
+}
 
 /* 边框颜色 */
 .bd-gray{border-bottom: 1px solid #e9e9e9;}
