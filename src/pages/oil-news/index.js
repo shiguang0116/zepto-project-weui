@@ -2,13 +2,16 @@
 import './index.less';
 import util from 'utils/util.js';
 
-const nav = {
+// 页面
+const page = {
     init : function(){
-        this.bindEvent();
+        this.getList();
     },
-    bindEvent : function(){
+    getList : function (){
         const _this = this;
     }
 };
 
-export default nav.init();
+$(function(){
+    page.init();
+})

@@ -1,5 +1,6 @@
 'use strict';
 import env from 'build/env.js';
+// import template from './template.js';
 
 const baseurl = env === 'development' ? '/api' : '';
 
@@ -86,6 +87,11 @@ const util = {
                 // 页面跳转
             }
         });
+    },
+    // 模板渲染
+    renderHtml: function(id, template, data){
+        var html = template(template, data);
+        document.getElementById(id).innerHTML = html;
     },
     // 获取url参数
     getUrlParam : function(name){
@@ -248,10 +254,22 @@ const util = {
     getOtherDay : function (param){
         var time    = param.time ? new Date(param.time) : new Date(),   //已知时间
             format  = param.format || 'yyyy-MM-dd',                     //时间格式: ''
-            dd      = param.dd || 6;                                    //前后几天: number
+            dd      = param.dd || -6;                                    //前后几天: number
         var timestamp = time.getTime() + 3600 * 1000 * 24 * dd
         var otherDay = util.getFormatDate({time: timestamp,format:format})
+        
         return otherDay;
+    },
+    // 提交的value
+    getDateValue: function(res,i){
+        var arr = [];
+        var value = '';
+        var i = i || 3
+        res.forEach((item,index) => {
+            index != i ? arr.push(item.value) : '';
+        });
+        value = arr.join('-');
+        return value;
     },
 
     // 处理页脚

@@ -1,0 +1,29 @@
+<%= require('html-loader!common/header/head-common.html') %>
+<%= htmlWebpackPlugin.options.title %>
+<%= require('html-loader!common/header/index.html') %>
+<div class="page">
+    <div class="weui-cells__title">微信菜单页</div>
+    <!-- 菜单 -->
+    <div class="weui-tab" id="nav">
+        <div class="weui-tabbar">
+            <div class="weui-tabbar__item dropdown">
+                <p class="weui-tabbar__label dropdown-btn">行情</p>
+                <div class="dropdown-con">
+                    <a href="/index/index.html">原油行情</a>
+                    <a href="/index/oil-news.html">行业新闻</a>
+                </div>
+            </div>
+            <div class="weui-tabbar__item dropdown">
+                <p class="weui-tabbar__label dropdown-btn">油品交易</p>
+                <div class="dropdown-con">
+                    <a href="/index/store.html">油品商城</a>
+                    <a href="/index/logistics.html">及时物流</a>
+                </div>
+            </div>
+            <a href="/index/user-center.html" class="weui-tabbar__item">
+                <p class="weui-tabbar__label">我的</p>
+            </a>
+        </div>
+    </div>
+</div>
+<%= require('html-loader!common/footer/index.html') %>

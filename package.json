@@ -1,7 +1,7 @@
 {
-  "name": "sg-zepto-webpack",
+  "name": "zepto-project-weui",
   "version": "1.0.0",
-  "description": "zepto-webpack项目搭建",
+  "description": "zepto项目搭建",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config build/webpack.dev.config.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shiguang0116/sg-zepto-webpack.git"
+    "url": "https://github.com/shiguang0116/zepto-project-weui.git"
   },
   "author": "shig",
   "license": "ISC",
@@ -48,6 +48,10 @@
     "webpack-px2rem-loader": "0.0.4"
   },
   "dependencies": {
+    "@antv/data-set": "^0.8.9",
+    "@antv/g2": "^3.2.4",
+    "art-template": "^4.12.2",
+    "art-template-loader": "^1.4.3",
     "hogan": "^1.0.2",
     "jquery-weui": "^1.2.0",
     "weui": "^1.1.3",

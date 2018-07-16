@@ -1,8 +1,42 @@
 <%= require('html-loader!common/header/head-common.html') %>
 <%= htmlWebpackPlugin.options.title %>
 <%= require('html-loader!common/header/index.html') %>
-<%= require('html-loader!common/nav/index.html') %>
 <div class="page">
-    <div class="weui-cells__title">微信菜单页</div>
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell weui-cell_select weui-cell_select-after validate rule_required">
+            <div class="weui-cell__hd">
+                <label class="weui-label">开始日期</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="showStartDate" class="weui-input weui-select" disabled/>
+            </div>
+            <div class="weui-cell__error"></div>
+        </div>
+        <div class="weui-cell weui-cell_select weui-cell_select-after validate rule_required">
+            <div class="weui-cell__hd">
+                <label for="" class="weui-label">结束日期</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="showEndDate" class="weui-input weui-select" disabled/>
+            </div>
+            <div class="weui-cell__error"></div>
+        </div>
+    </div>
+    <div id="points_chart" class="space bkg-white"></div>
+
+    <div id="content"></div>
+    <script id="template1" type="text/html">
+        <h1>{{title}}</h1> 
+        {{include 'list'}}  // 默认使用当前数据
+        {{include 'list' list}}  // 可以指定数据
+    </script>
+    <script>
+        var data = {
+            title: '嵌入子模板',
+            list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+        };
+        var html = template('template1', data);
+        document.getElementById('content').innerHTML = html;
+    </script>
 </div>
 <%= require('html-loader!common/footer/index.html') %>

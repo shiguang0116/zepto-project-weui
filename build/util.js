@@ -6,8 +6,8 @@ const config  = require('./config.js');
 const pageObj = {
     'wechat-menu'               : { type: 'index', title: '微信菜单' },
 
-    'index'                     : { type: 'index', title:'本地报价' },
-    'oil-price'                 : { type: 'index', title:'国际油价' },
+    'index'                     : { type: 'index', title:'原油行情' },
+    // 'oil-price'                 : { type: 'index', title:'国际油价' },
     'oil-news'                  : { type: 'index', title:'市场新闻' },
     'oil-news-info'             : { type: 'index', title:'市场新闻' },
     

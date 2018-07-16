@@ -9,7 +9,7 @@ module.exports = {
     // server
     host: 'localhost', 
     port: 5000, 
-    autoOpenPage: 'index/',
+    autoOpenPage: 'index/wechat-menu.html',
     proxyTable: {
         "/api": {
             target: "http://192.168.31.234",

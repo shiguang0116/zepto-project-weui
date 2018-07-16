@@ -2,7 +2,7 @@
 <%= htmlWebpackPlugin.options.title %>
 <%= require('html-loader!common/header/index.html') %>
 <div class="page">
-    <div class="weui-cells weui-cells_form" style="margin-top: 0.18rem">
+    <div class="weui-cells weui-cells_form space">
         <div class="weui-cell validate rule_required rule_phone">
             <div class="weui-cell__hd">
                 <label for="Account" class="weui-label">手机号</label>
@@ -23,7 +23,7 @@
                 <input id="SMSCode" class="weui-input" placeholder="请输入验证码"/>
             </div>
             <div class="weui-cell__ft">
-                <button class="weui-vcode-btn">获取验证码</button>
+                <button class="weui-vcode-btn" disabled>获取验证码</button>
             </div>
             <div class="weui-cell__error"></div>
         </div>
@@ -51,9 +51,9 @@
             </div>
             <div class="weui-cell__error"></div>
         </div>
-        <div class="w" style="margin-top: 0.3rem">
-            <a href="javascript:;" id="submit" class="weui-btn weui-btn_primary">重置密码</a>
-        </div>
+    </div>
+    <div class="weui-btn-area">
+        <a href="javascript:;" id="submit" class="weui-btn weui-btn_primary">重置密码</a>
     </div>
 </div>
 <%= require('html-loader!common/footer/index.html') %>

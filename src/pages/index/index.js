@@ -1,129 +1,91 @@
 'use strict';
 import './index.less';
-import util from'utils/util.js';
-import nav from'common/nav/index';
+import util from 'utils/util.js';
+import G2 from '@antv/g2';
+import DataSet from '@antv/data-set';
 
 // 页面
 const page = {
-    time: '',
+    chartData:[],
     init : function(){
+        $('#showStartDate').val(util.getOtherDay({}));
+        $('#showEndDate').val(util.getFormatDate({}));
         this.getList();
         this.bindEvent();
     },
-    getList : function(){
-
+    chart: function () {
+        const ds = new DataSet();
+        const dv = ds.createView().source(this.chartData);
+        dv.transform({
+            type: 'fold',
+            fields: ['WTI', 'BRENT'], // 展开字段集
+            key: 'key', // key字段
+            value: 'value', // value字段
+        });
+        const chart = new G2.Chart({
+            container: 'points_chart',
+            forceFit: true,
+            height: 400,
+            padding: [10, 30, 70, 40],
+        });
+        chart.source(dv, {
+            date: {
+                range: [0, 1]
+            }
+        });
+        chart.tooltip({
+            crosshairs: {
+                type: 'line'
+            }
+        });
+        chart.line().position('date*value').color('key', ['#34B8C2', '#F56A01']);
+        chart.point().position('date*value').color('key').size(4).shape('circle').style({
+            stroke: '#fff',
+            lineWidth: 1
+        });
+        chart.render();
+    },
+    getList : function (){
+        const _this = this;
+        const result = util.validate($(this));
+        if(result){
+            // 有数据
+            _this.chartData = [
+                { date: '07-09', 'WTI': '74', 'BRENT': '78' },
+                { date: '07-10', 'WTI': '72', 'BRENT': '75' },
+                { date: '07-11', 'WTI': '71', 'BRENT': '74' },
+                { date: '07-12', 'WTI': '73', 'BRENT': '79' },
+            ];
+            $('#points_chart').empty();
+            _this.chart();
+        }
     },
     bindEvent : function(){
         const _this = this;
-        
-        $('#showDatePicker').tap(function () {
+        $('#showStartDate').tap(function () {
             weui.datePicker({
-                start: 2017,
-                end: new Date(),
-                defaultValue: [new Date().getFullYear(), new Date().getMonth()+1, new Date().getDate()],
+                start: new Date().getFullYear()-1,
+                end: $('#showEndDate').val(),
+                defaultValue: [new Date($('#showStartDate').val()).getFullYear(), new Date($('#showStartDate').val()).getMonth()+1, new Date($('#showStartDate').val()).getDate()],
                 onConfirm: function (res) {
-                    var arr = [];
-                    var value = '';
-                    res.forEach((item,index) => {
-                        index !=2 ? arr.push(item.value) : '';
-                    });
-                    value = arr.join('-');
-                    $('#showDatePicker').val(value);
+                    const value = util.getDateValue(res);
+                    $('#showStartDate').val(value);
+                    _this.getList();
                 }
             });
-            $('.weui-picker__group').eq(2).remove()
         });
-        $('#showAddress').tap(function () {
-            weui.picker([
-                {
-                    label: '飞机票',
-                    value: 0,
-                    children: [
-                        {
-                            label: '经济舱',
-                            value: 1,
-                            children: [
-                                {
-                                    label: '经济舱',
-                                    value: 1
-                                },
-                                {
-                                    label: '商务舱',
-                                    value: 2
-                                }
-                            ]
-                        },
-                        {
-                            label: '商务舱',
-                            value: 2,
-                            children: [
-                                {
-                                    label: '经济舱',
-                                    value: 1
-                                },
-                                {
-                                    label: '商务舱',
-                                    value: 2
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    label: '火车票',
-                    value: 1,
-                    children: [
-                        {
-                            label: '卧铺',
-                            value: 1,
-                            disabled: true, // 不可用
-                            children: [
-                                {
-                                    label: '卧铺',
-                                    value: 1,
-                                    disabled: true // 不可用
-                                },
-                                {
-                                    label: '坐票',
-                                    value: 2
-                                }
-                            ]
-                        },
-                        {
-                            label: '坐票',
-                            value: 2,
-                            children: [
-                                {
-                                    label: '卧铺',
-                                    value: 1,
-                                    disabled: true // 不可用
-                                },
-                                {
-                                    label: '坐票',
-                                    value: 2
-                                }
-                            ]
-                        }
-                    ]
-                }], {
-                   className: 'custom-classname',
-                   container: 'body',
-                   defaultValue: [1, 3],
-                   onChange: function (result) {
-                       console.log(result)
-                   },
-                   onConfirm: function (result) {
-                       console.log(result)
-                   },
-                });
+        $('#showEndDate').tap(function () {
+            weui.datePicker({
+                start: new Date().getFullYear()-1,
+                end: new Date(),
+                defaultValue: [new Date($('#showEndDate').val()).getFullYear(), new Date($('#showEndDate').val()).getMonth()+1, new Date($('#showEndDate').val()).getDate()],
+                onConfirm: function (res) {
+                    const value = util.getDateValue(res);
+                    $('#showEndDate').val(value);
+                    _this.getList();
+                }
+            });
         });
-        // 提交
-        $('#submit').tap(function(){
-            const result = util.validate($(this))
-            if(result){
-                console.log('ajax')
-            }
-        })
     }
 };
 

@@ -51,14 +51,14 @@ const webpackBaseConfig = {
                     use: [
                         { loader: "css-loader" },
                         { loader: 'postcss-loader'},
-                        { loader: "less-loader" },
                         {
                             loader: 'px2rem-loader',
                             options: {
                               remUnit: 100,
                               remPrecision: 2
                             }
-                        }
+                        },
+                        { loader: "less-loader" },
                     ]
                 }) 
             },
@@ -71,12 +71,8 @@ const webpackBaseConfig = {
                 }
             },
             {
-                test: /\.string$/, 
-                loader: 'html-loader',
-                query : {
-                    minimize : true,
-                    removeAttributeQuotes : false
-                }
+                test: /\.art$/,
+                loader: 'art-template-loader'
             },
             {
                 test: /\.js$/,
@@ -84,6 +80,9 @@ const webpackBaseConfig = {
                 exclude: /node_modules/
             }
         ]
+    },
+    node: {
+        fs: "empty"
     },
     // 配置路径
     resolve : {

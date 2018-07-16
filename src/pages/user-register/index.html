@@ -2,7 +2,7 @@
 <%= htmlWebpackPlugin.options.title %>
 <%= require('html-loader!common/header/index.html') %>
 <div class="page">
-    <div class="weui-cells weui-cells_form" style="margin-top: 0.18rem">
+    <div class="weui-cells weui-cells_form space">
         <div class="weui-cell validate rule_required rule_phone">
             <div class="weui-cell__hd">
                 <label for="Account" class="weui-label">手机号码</label>
@@ -23,7 +23,7 @@
                 <input id="SMSCode" class="weui-input" placeholder="请输入验证码"/>
             </div>
             <div class="weui-cell__ft">
-                <button class="weui-vcode-btn">获取验证码</button>
+                <button class="weui-vcode-btn" disabled>获取验证码</button>
             </div>
             <div class="weui-cell__error"></div>
         </div>
@@ -70,9 +70,17 @@
             创建及时油账户的同时，我同意遵守《<a href="javascript:void(0);">及时油服务条款</a>》及《<a href="javascript:void(0);">注册协议</a>》
         </span>
     </label>
-
     <div class="weui-btn-area">
         <a class="weui-btn weui-btn_primary" href="javascript:" id="submit">注册</a>
+    </div>
+    <!-- 说明 -->
+    <div class="w text-grayer register-info">
+        <p>我已经注册，现在就<a href="/index/user-login.html" class="text-jv">登录</a></p>
+        <h4>注册及时油账户，您可以享受以下权益和服务：</h4>
+        <p>1.专属客服一对一服务；</p>
+        <p>2.油品采购享受会员折扣；</p>
+        <p>3.运油车辆跟踪信息及时反馈；</p>
+        <p>4.您的信息使用现代最新技术进行加密存储，保证信息安全。</p>
     </div>
 </div>
 <%= require('html-loader!common/footer/index.html') %>

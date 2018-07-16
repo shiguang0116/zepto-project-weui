@@ -1,0 +1,94 @@
+<%= require('html-loader!common/header/head-common.html') %>
+<%= htmlWebpackPlugin.options.title %>
+<%= require('html-loader!common/header/index.html') %>
+<div class="page">
+	<div class="weui-panel weui-panel_access">
+		<div class="weui-panel__hd">预定车队步骤：</div>
+		<div class="weui-panel__bd">
+			<div class="weui-media-box weui-media-box_text">
+				<h4 class="weui-media-box__title text-jv">1、发布需求</h4>
+				<p class="weui-media-box__desc">向及时油发布需求及信息</p>
+			</div>
+			<div class="weui-media-box weui-media-box_text">
+				<h4 class="weui-media-box__title text-jv">2、专属客服服务</h4>
+				<p class="weui-media-box__desc">专属客服为您提供车队及最新报价</p>
+			</div>
+			<div class="weui-media-box weui-media-box_text">
+				<h4 class="weui-media-box__title text-jv">3、运油车辆全程跟踪</h4>
+				<p class="weui-media-box__desc">全程车辆跟踪，及时上报车辆位置及状况</p>
+			</div>
+			<div class="weui-media-box weui-media-box_text">
+				<h4 class="weui-media-box__title text-jv">4、验货付款</h4>
+				<p class="weui-media-box__desc">验货后向及时油工作人员支付运输费用</p>
+			</div>
+		</div>
+	</div>
+	<div class="weui-panel weui-panel_access">
+		<div class="weui-panel__hd">请填写以下信息预定车队：</div>
+		<div class="weui-panel__bd">
+			<div class="weui-cells weui-cells_form">
+				<div class="weui-cell validate rule_required">
+					<div class="weui-cell__hd">
+						<label for="" class="weui-label">联系人</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input class="weui-input" placeholder="请输入联系人" />
+					</div>
+					<div class="weui-cell__ft">
+						<i class="weui-icon-warn"></i>
+					</div>
+					<div class="weui-cell__error"></div>
+				</div>
+				<div class="weui-cell validate rule_required">
+					<div class="weui-cell__hd">
+						<label for="" class="weui-label">联系电话</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input class="weui-input" placeholder="请输入联系电话" />
+					</div>
+					<div class="weui-cell__ft">
+						<i class="weui-icon-warn"></i>
+					</div>
+					<div class="weui-cell__error"></div>
+				</div>
+				<div class="weui-cell weui-cell_select weui-cell_select-after validate rule_required">
+					<div class="weui-cell__hd">
+						<label for="" class="weui-label">用车时间</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input id="showDatePicker" class="weui-input weui-select" disabled placeholder="请选择用车时间" />
+					</div>
+					<div class="weui-cell__error"></div>
+				</div>
+				<div class="weui-cell validate rule_required">
+					<div class="weui-cell__hd">
+						<label for="" class="weui-label">出发地</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input class="weui-input" placeholder="请输入出发地" />
+					</div>
+					<div class="weui-cell__ft">
+						<i class="weui-icon-warn"></i>
+					</div>
+					<div class="weui-cell__error"></div>
+				</div>
+				<div class="weui-cell validate rule_required">
+					<div class="weui-cell__hd">
+						<label for="" class="weui-label">目的地</label>
+					</div>
+					<div class="weui-cell__bd">
+						<input class="weui-input" placeholder="请输入目的地" />
+					</div>
+					<div class="weui-cell__ft">
+						<i class="weui-icon-warn"></i>
+					</div>
+					<div class="weui-cell__error"></div>
+				</div>
+			</div>
+			<div class="weui-btn-area">
+				<a class="weui-btn weui-btn_primary" href="javascript:" id="submit">提交</a>
+			</div>
+		</div>
+	</div>
+</div>
+<%= require('html-loader!common/footer/index.html') %>

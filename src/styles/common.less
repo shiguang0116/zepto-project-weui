@@ -1,3 +1,79 @@
+// reset
+body{
+    color: @body-color;
+    font-size: 0.16rem;
+    font-family: @font-family;
+    background-color: @body-background;
+}
+a,img,span{
+    display: inline-block;
+}
+
+// 布局
+.flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &:before,
+    &:after {
+        display: flex;
+    }
+    // flex1
+    .flex1{
+        flex: 1;
+    }
+    // x轴布局
+    &-start {   //x轴原点
+        justify-content: flex-start;
+    }
+    &-center {  //x轴居中
+        justify-content: center;
+    }
+    &-end {     //x轴反方向
+        justify-content: flex-end;
+    }
+    &-between { //x轴平分
+        justify-content: space-between;
+    }
+    &-around { //x轴有间隔地平分
+        justify-content: space-around;
+    }
+    // y轴布局
+    &-top { //顶部对齐
+        align-items: flex-start;
+    }
+    &-middle { //居中对齐
+        align-items: center;
+    }
+    &-bottom { //底部对齐
+        align-items: flex-end;
+    }
+}
+.w{  
+    padding-left: @layout-padding;
+    padding-right: @layout-padding;
+}
+.space{ margin-top: @space; }
+.hide{ display: none; }
+.bkg-white{ background-color: #fff; }
+
+/* text */
+.text-left{ text-align: left; }
+.text-right{ text-align: right; }
+.text-center{ text-align: center; }
+.text-gray{ color: @text-color; }
+.text-grayer{ color: #999; }
+.text-jv{ color: @yoo-jv; }
+.text-hu{ color: @yoo-hu; }
+.nowrap{
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+.break-word{
+    word-wrap: break-word;
+}
 
 // 没有数据
 .empty{
@@ -5,7 +81,6 @@
 }
 
 // link
-
 .weui-agree a {
     color: @link-btn-color;
 }
@@ -23,11 +98,30 @@
     line-height: 2.3;
     font-size: 0.16rem;
 } 
+.weui-vcode-btn{
+    font-size: 0.16rem;
+    color: @btn-primary-bg;
+    padding: 0 1em 0 0.7em;
+}
+.weui-vcode-btn:active {
+    color: @btn-primary-bg-active;
+}
+.weui-vcode-btn:disabled{
+    color: @disabled-color;
+}
 
-// form
+// picker
+.weui-picker__item {
+    font-size: 0.2rem;
+}
+.weui-picker__action{
+    color: @link-color;
+}
+
+// cell
 .weui-cells{
     font-size: 0.16rem;
-    // font-size: 16px;
+    margin-top: @space;
     .weui-cell.weui-cell_warn{
         margin-bottom: 0.25rem;
         .weui-cell__error{
@@ -47,17 +141,6 @@
 .weui-cell_warn.weui-cell_select .weui-cell__bd:after {
     border-color: @error-color;
 }
-.weui-picker__item {
-    font-size: 0.2rem;
-}
-.weui-vcode-btn{
-    color: @btn-primary-bg;
-    padding: 0 1em 0 0.7em;
-}
-.weui-vcode-btn:active {
-    color: @btn-primary-bg;
-}
-
 .weui-cells:after {
     border-bottom: 0px solid #e5e5e5;
 }
