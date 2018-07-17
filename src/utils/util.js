@@ -1,6 +1,5 @@
 'use strict';
-import env from 'build/env.js';
-// import template from './template.js';
+import env from '../../build/env.js';
 
 const baseurl = env === 'development' ? '/api' : '';
 

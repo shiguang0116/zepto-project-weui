@@ -4,12 +4,11 @@ const path                = require('path');
 const ExtractTextPlugin   = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin   = require('html-webpack-plugin');
 const CopyWebpackPlugin   = require('copy-webpack-plugin');
-// const px2rem              = require('postcss-px2rem');
 const util                = require('./util.js');
 const config              = require('./config.js');
 
 function resolve(_path){
-    return path.resolve(__dirname, '../' + _path)
+    return path.resolve(__dirname, '../' + _path);
 }
 
 // 配置
@@ -32,7 +31,12 @@ const webpackBaseConfig = {
                 use: ExtractTextPlugin.extract({  
                     fallback: "style-loader",  
                     use: [
-                        { loader: "css-loader" },
+                        { 
+                            loader: "css-loader" ,
+                            options: {
+                                importLoaders: 1    //后1个loader
+                            }
+                        },
                         { loader: 'postcss-loader'},
                         {
                             loader: 'px2rem-loader',
@@ -49,7 +53,12 @@ const webpackBaseConfig = {
                 use: ExtractTextPlugin.extract({  
                     fallback: "style-loader",  
                     use: [
-                        { loader: "css-loader" },
+                        { 
+                            loader: "css-loader" ,
+                            options: {
+                                importLoaders: 1    //后1个loader
+                            }
+                        },
                         { loader: 'postcss-loader'},
                         {
                             loader: 'px2rem-loader',
@@ -66,14 +75,14 @@ const webpackBaseConfig = {
                 test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf)\??.*$/, 
                 loader: 'url-loader',
                 options: {
-                    limit: 100,
+                    limit: 1024,
                     name: util.assetsPath('image/[name].[ext]')
                 }
             },
-            {
-                test: /\.art$/,
-                loader: 'art-template-loader'
-            },
+            // {
+            //     test: /\.art$/,
+            //     loader: 'art-template-loader'
+            // },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
@@ -81,14 +90,14 @@ const webpackBaseConfig = {
             }
         ]
     },
+    
     node: {
         fs: "empty"
     },
     // 配置路径
     resolve : {
-        extensions: ['.vue', '.js', ',json'],
+        extensions: ['.js', ',json'],
         alias : {
-            'build'         : resolve('build'),
             '@'             : resolve('src'),
             'common'        : resolve('src/common'),
             'components'    : resolve('src/components'),
@@ -111,11 +120,6 @@ const webpackBaseConfig = {
                 to: util.assetsPath('js/'),
                 flatten: true
             },
-            // {
-            //     from: resolve('node_modules/jquery-weui/dist/js/jquery-weui.min.js'),
-            //     to: util.assetsPath('js/'),
-            //     flatten: true
-            // },
             {
                 from: resolve('src/utils/js'),
                 to: util.assetsPath('js/'),
@@ -130,9 +134,9 @@ const webpackBaseConfig = {
 // 配置html文件
 const pages = util.getEntries('./src/pages/**/*.html')
 for(let page in pages) {
-    let urlType = util.urlType(page)
-    let title = util.title(page)
-    let baseTitle = ' - 及时油'
+    let urlType = util.urlType(page);
+    let title = util.title(page);
+    let baseTitle = ' - 及时油';
     let conf = {
         template    : pages[page], 
         filename    : urlType + '/' + page + '.html',

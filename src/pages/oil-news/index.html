@@ -1,11 +1,11 @@
-<%= require('html-loader!common/header/head-common.html') %>
-<%= htmlWebpackPlugin.options.title %>
-<%= require('html-loader!common/header/index.html') %>
+${require('html-loader!common/header/head-common.html')}
+${htmlWebpackPlugin.options.title}
+${require('html-loader?interpolate=require!common/header/index.html')}
 <div class="page news">
 	<div class="weui-cells">
 		<a class="weui-cell weui-cell_access" href="/index/oil-news-info.html">
 			<div class="weui-cell__hd">
-				<img src="" alt="">
+				<img src="${require('../../images/product.png')}" alt="">
 			</div>
 			<div class="weui-cell__bd">
 				<p>标题文字标题文字标题文字标题文字标题文字标题文字标题文字</p>
@@ -13,4 +13,4 @@
 		</a>
 	</div>
 </div>
-<%= require('html-loader!common/footer/index.html') %>
+${require('html-loader!common/footer/index.html')}
