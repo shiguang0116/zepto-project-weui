@@ -1,0 +1,27 @@
+<%= require('html-loader!common/header/head-common.html') %>
+<%= htmlWebpackPlugin.options.title %>
+<%= require('html-loader!common/header/index.html') %>
+<div class="page">
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell weui-cell_select weui-cell_select-after validate rule_required">
+            <div class="weui-cell__hd">
+                <label class="weui-label">开始日期</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="showStartDate" class="weui-input weui-select" disabled/>
+            </div>
+            <div class="weui-cell__error"></div>
+        </div>
+        <div class="weui-cell weui-cell_select weui-cell_select-after validate rule_required">
+            <div class="weui-cell__hd">
+                <label for="" class="weui-label">结束日期</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="showEndDate" class="weui-input weui-select" disabled/>
+            </div>
+            <div class="weui-cell__error"></div>
+        </div>
+    </div>
+    <div id="business_chart" class="space bkg-white"></div>
+</div>
+<%= require('html-loader!common/footer/index.html') %>

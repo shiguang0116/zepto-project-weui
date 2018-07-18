@@ -1,0 +1,29 @@
+<%= require('html-loader!common/header/head-common.html') %>
+<%= htmlWebpackPlugin.options.title %>
+<%= require('html-loader!common/header/index.html') %>
+<div class="page logistics">
+    <a class="card" href="/default/user-logistics-info.html">
+        <div class="card-hd">
+            <div class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p>运输单号：723645384676889</p>
+                </div>
+                <div class="weui-cell__ft"></div>
+            </div>
+        </div>
+        <div class="card-bd">
+            <p>联系人：石光</p>
+            <p>联系电话：13566667777</p>
+            <p>出发地：稍等会发货</p>
+            <p>目的地：会计考合格</p>
+            <div class="flex flex-between">
+                <p>运输费用：34&nbsp;元</p>
+                <p class="text-hu">未审核</p>
+            </div>
+        </div>
+    </a>
+    
+	<!-- loadmore -->
+    
+</div>
+<%= require('html-loader!common/footer/index.html') %>

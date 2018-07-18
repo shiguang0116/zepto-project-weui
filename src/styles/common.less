@@ -6,9 +6,8 @@ body{
     background-color: @body-background;
 }
 h1,h2,h3,h4,h5,h6{ font-weight: 400; }
-a,img,span{
-    display: inline-block;
-}
+a,img,span,i{ display: inline-block; }
+a{ color: @link-color; }
 
 // 布局
 .flex {
@@ -76,11 +75,6 @@ a,img,span{
     word-wrap: break-word;
 }
 
-// 没有数据
-.empty{
-    background: url('../images/empty.png') no-repeat;
-}
-
 // link
 .weui-agree a {
     color: @link-btn-color;
@@ -116,6 +110,10 @@ a,img,span{
 }
 .weui-icon_msg.weui-icon-warn {
     color: @warning-color;
+}
+.weui-switch:checked, .weui-switch-cp__input:checked ~ .weui-switch-cp__box {
+    border-color: @link-color;
+    background-color: @link-color;
 }
 
 // picker

@@ -1,0 +1,27 @@
+<%= require('html-loader!common/header/head-common.html') %>
+<%= htmlWebpackPlugin.options.title %>
+<%= require('html-loader!common/header/index.html') %>
+<div class="page">
+    <div class="card">
+        <div class="card-hd">
+            订单号：273578345638348
+        </div>
+        <div class="card-bd">
+            <p class="card-title">中国石化 车柴 0# 国V</p>
+            <p>油库：湖北省</p>
+            <p>下单时间：2018-05-05 10:21:13</p>
+            <p>交易数量：2&nbsp;吨</p>
+            <p>成交价：2678&nbsp;元/吨</p>
+            <p>协议价：2467&nbsp;元/吨</p>
+        </div>
+        <div class="card-ft flex flex-middle">
+            <p class="flex1">交易总金额：
+                <span class="text-jv">6690</span>&nbsp;元</p>
+            <span class="text-hu">待审核</span>
+        </div>
+    </div>
+
+    <!-- loadmore -->
+    
+</div>
+<%= require('html-loader!common/footer/index.html') %>

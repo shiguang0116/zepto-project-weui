@@ -234,29 +234,24 @@ const util = {
             }  
         })  
     },
-    // 获取上个月的日期
-    getLastMonthData : function (){
-        var now = util.getFormatDate()
-        var arr = now.split('-')
-        arr[1] = arr[1] - 1
-        if (arr[1] == 0) {
-            arr[0] = arr[0]-1
-            arr[1] = 12
-        }
-        if (arr[1]<10) {
-            arr[1] = '0' + arr[1]
-        }
-        var last = arr.join('-')
-        return last;
+    // 获取几月前后的日期
+    getOtherMonth : function (param){
+        var format  = param.format || 'yyyy-MM-dd',         //时间格式: ''
+            MM      = !isNaN(param.MM) ? param.MM : -1,     //前后几月: number
+            time    = new Date();
+        // 判断有没有‘日’
+        var dd = format.indexOf('dd') > -1 ? time.getDate() : '1' ;
+        time.setMonth(time.getMonth()+MM, dd);
+        var result = util.getFormatDate({time: time, format:format});
+        return result;
     },
     // 获取前后几天的日期
     getOtherDay : function (param){
         var time    = param.time ? new Date(param.time) : new Date(),   //已知时间
             format  = param.format || 'yyyy-MM-dd',                     //时间格式: ''
-            dd      = param.dd || -6;                                    //前后几天: number
-        var timestamp = time.getTime() + 3600 * 1000 * 24 * dd
-        var otherDay = util.getFormatDate({time: timestamp,format:format})
-        
+            dd      = !isNaN(param.dd) ? param.dd : -6;                 //前后几天: number
+        var timestamp = time.getTime() + 3600 * 1000 * 24 * dd;
+        var otherDay = util.getFormatDate({time: timestamp,format:format});
         return otherDay;
     },
     // 提交的value

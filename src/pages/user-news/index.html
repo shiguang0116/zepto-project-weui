@@ -1,0 +1,45 @@
+<%= require('html-loader!common/header/head-common.html') %>
+<%= htmlWebpackPlugin.options.title %>
+<%= require('html-loader!common/header/index.html') %>
+<div class="page user-news">
+    <div class="weui-nav" id="news-tab">
+        <div class="weui-navbar">
+            <div class="weui-navbar__item weui-bar__item_on">
+                订单消息
+            </div>
+            <div class="weui-navbar__item">
+                系统消息
+            </div>
+            <div class="weui-navbar__item">
+                活动消息
+            </div>
+        </div>
+        <div class="weui-tab__panel">
+            <div class="weui-tab__content">
+                <div class="weui-panel weui-panel_access">
+                    <div class="weui-panel__bd">
+                        <div class="weui-media-box weui-media-box_text">
+                            <p class="text-gray">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                        </div>
+                        <div class="weui-media-box weui-media-box_text">
+                            <p class="text-gray">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-tab__content">
+                <div class="empty">
+                    <i class="empty-img"></i>
+                    <p class="empty-text">您暂时没有系统消息！</p>
+                </div>
+            </div>
+            <div class="weui-tab__content">
+                <div class="empty">
+                    <i class="empty-img"></i>
+                    <p class="empty-text">您暂时没有活动消息！</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%= require('html-loader!common/footer/index.html') %>
