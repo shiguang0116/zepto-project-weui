@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 const webpack             = require('webpack');
 const path                = require('path');
 const ExtractTextPlugin   = require('extract-text-webpack-plugin');
@@ -31,12 +31,7 @@ const webpackBaseConfig = {
                 use: ExtractTextPlugin.extract({  
                     fallback: "style-loader",  
                     use: [
-                        { 
-                            loader: "css-loader" ,
-                            options: {
-                                importLoaders: 1    //后1个loader
-                            }
-                        },
+                        { loader: "css-loader" },
                         { loader: 'postcss-loader'},
                         {
                             loader: 'px2rem-loader',
@@ -53,13 +48,8 @@ const webpackBaseConfig = {
                 use: ExtractTextPlugin.extract({  
                     fallback: "style-loader",  
                     use: [
-                        { 
-                            loader: "css-loader" ,
-                            options: {
-                                importLoaders: 1    //后1个loader
-                            }
-                        },
-                        { loader: 'postcss-loader'},
+                        { loader: "css-loader" },
+                        { loader: 'postcss-loader' },
                         {
                             loader: 'px2rem-loader',
                             options: {
