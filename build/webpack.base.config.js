@@ -81,9 +81,9 @@ const webpackBaseConfig = {
         ]
     },
     
-    node: {
-        fs: "empty"
-    },
+    // node: {
+    //     fs: "empty"
+    // },
     // 配置路径
     resolve : {
         extensions: ['.js', ',json'],
